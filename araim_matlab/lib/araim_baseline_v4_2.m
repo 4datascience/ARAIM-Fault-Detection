@@ -67,7 +67,7 @@ bias = bias(idx,:);
 bias_ss = bias_ss(idx,:);
 subsets = subsets(idx,:);
 pap_subset= pap_subset(idx);
-pap_multiplier = pap_multiplier(idx)
+pap_multiplier = pap_multiplier(idx);
 
 %%%%%%%%%%%%%%%%%%%%%%% Compute test thresholds %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
