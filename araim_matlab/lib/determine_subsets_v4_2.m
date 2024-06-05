@@ -105,7 +105,7 @@ pap_subset_multiplier = pap_subset_multiplier(1:j);
 
 %Transform Nsat+Nconst subset vector in Nsat subset vector
 subsets_const = subsets_ex(:,Nsat+1:Nsat+Nconst) * G(:,4:(3+Nconst))';
-subsets_sat  = min(subsets_ex(:,1:Nsat) + subsets_const ,1); 
+subsets_sat  = min(subsets_ex(:,1:Nsat) + subsets_const ,1);
 
 
 %subset consolidation
@@ -117,6 +117,7 @@ if svconst(jj)
     id_const_c=find((sum(subsets_ex(:,1:Nsat),2)==0).*...
         (sum(subsets_ex,2)==1).*(subsets_ex(:,Nsat+kk)==1));
     
+    if id_const_c
     %If the constellation wide fault is part of the monitored set
     if id_const_c
 
@@ -125,16 +126,16 @@ if svconst(jj)
     index_cs = find(((subsets_sat*subsets_sat(id_const_c,:)')>0).*...
     ((subsets_sat*(1-subsets_sat(id_const_c,:))')<=0));
 
-    else
+    % else
+    % 
+    % %In case the constellation fault is not a monitored fault, check if the
+    % %satellite faults can be consolidated into the constellation fault.
+    % const_mask = [[ones(1,length(gps_idx)) zeros(1,length(gal_idx))]; ...
+    %     [zeros(1,length(gps_idx)) ones(1,length(gal_idx))]];
+    % 
+    % index_cs = find(((subsets_sat*const_mask(jj,:)')>0).*...
+    %     ((subsets_sat*(1-const_mask(jj,:)'))<=0));
 
-    %find subsets that include the constellation fault or satellites within
-    %only that constellation
-    const_mask = [[ones(1,length(gps_idx)) zeros(1,length(gal_idx))]; ...
-        [zeros(1,length(gps_idx)) ones(1,length(gal_idx))]];
-
-    index_cs = find(((subsets_sat*const_mask(jj,:)')>0).*...
-        ((subsets_sat*(1-const_mask(jj,:)'))<=0));
-    
     end
 
     %sort subsets by decreasing probability
@@ -163,14 +164,14 @@ if svconst(jj)
             texp_const_multiplier(kk);
         p_not_monitored=p_not_monitored - pap_subset_texp(id_const_c);
 
-    else
-
-        p_not_monitored=p_not_monitored + sum(pap_subset_texp(idrmv));
-        pap_subset_texp(end+1)=(p_const(kk)+sum(pap_subset(idrmv)))*...
-            texp_const_multiplier(kk);
-        subsets_sat(end+1,:)=const_mask(jj,:);
-        p_not_monitored=p_not_monitored - pap_subset_texp(end);
-        pap_subset_multiplier(end+1,:)=texp_const_multiplier(kk);
+    % else
+    % 
+    %     p_not_monitored=p_not_monitored + sum(pap_subset_texp(idrmv));
+    %     pap_subset_texp(end+1)=(p_const(kk)+sum(pap_subset(idrmv)))*...
+    %         texp_const_multiplier(kk);
+    %     subsets_sat(end+1,:)=const_mask(jj,:);
+    %     p_not_monitored=p_not_monitored - pap_subset_texp(end);
+    %     pap_subset_multiplier(end+1,:)=texp_const_multiplier(kk);
     
     end
     
@@ -179,6 +180,8 @@ if svconst(jj)
     pap_subset_texp = pap_subset_texp(idnew);
     pap_subset_multiplier = pap_subset_multiplier(idnew);
     subsets_sat = subsets_sat(idnew,:);
+
+    end %IF of id_const_c
 end
 end
 
