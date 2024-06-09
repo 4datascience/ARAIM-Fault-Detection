@@ -17,7 +17,7 @@ function design_parameters()
     global PHMI_V PHMI_H PHMI
     global PALERT PFA_V PFA_H PFA
     global PTHRES
-    global PFC
+    global FC
     global NITER
     global TOL_PL
 
@@ -34,8 +34,8 @@ function design_parameters()
     PFA = PFA_V + PFA_H;
     % Threshold for the integrity risk allocation to not monitored faults [^/h]
     PTHRES = 8e-8;
-    % Fault consolidation threshold
-    PFC = 0.01;
+    % Fault consolidation weight
+    FC = 0.01;
     % Maximum number of iterations to compute Protection Levels
     NITER = 10;
     % Protection Level tolerance stop condition [^m]

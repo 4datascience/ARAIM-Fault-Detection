@@ -28,7 +28,7 @@ init;
 
 % Analysis time (units in seconds)
 t_start = datetime(2019,08,06,00,00,00);
-t_end = datetime(2019,08,06,00,10,00);
+t_end = datetime(2019,08,16,00,00,00);
 TStep = 300;
 analysis_interval = t_start:seconds(TStep):t_end;
 

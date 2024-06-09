@@ -10,10 +10,10 @@
 function [vpl, hpl, sig_acc, emt] = araim_baseline_v4_2(G, sigflt2_int, sigflt2_acc, nom_bias_int, nom_bias_acc, p_sat, p_const,...
     gps_idx, gal_idx)
 
-global PTHRES PFC PFA_V PFA_H TOL_PL PHMI_V PHMI_H NES_INT
+global PTHRES FC PFA_V PFA_H TOL_PL PHMI_V PHMI_H NES_INT
 
 %%%%%%%%%%%% Determine subsets and associated probabilities %%%%%%%%%%%%%%%
-[subsets, pap_subset, pap_multiplier, p_not_monitored]= determine_subsets_v4_2(G, p_sat, p_const, gps_idx, gal_idx, PTHRES, PFC);
+[subsets, pap_subset, pap_multiplier, p_not_monitored]= determine_subsets_v4_2(G, p_sat, p_const, gps_idx, gal_idx, PTHRES, FC);
 
 %%%%%%%%%%%%% Compute subset position solutions, sigmas, and biases %%%%%%%
 [sigma, sigma_ss, bias, bias_ss, s1vec, s2vec, s3vec] = compute_subset_solutions(...

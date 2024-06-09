@@ -10,5 +10,5 @@
 
 World = readWorld("./world_110m.txt");
 
-[latlong] = GridSphere(2000);
-Plots_Worlds(World, latlong);
+[latlong] = GridSphere(2500);
+Plots_Worlds(World, latlong, './');

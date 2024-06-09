@@ -46,7 +46,7 @@ function validate_detection_parameters()
 %{
     validate_statistic_parameters(): Validation of ARAIM Fault detection parameters
 %}
-    global PHMI PHMI_V PHMI_H PALERT PFA_V PFA_H PFA PTHRES PFC NITER TOL_PL TEXP_INT TTA_INT NES_INT TEXP_CONT TTA_CONT NES_CONT
+    global PHMI PHMI_V PHMI_H PALERT PFA_V PFA_H PFA PTHRES FC NITER TOL_PL TEXP_INT TTA_INT NES_INT TEXP_CONT TTA_CONT NES_CONT
 
     % Design parameters
     probability(PHMI)
@@ -72,7 +72,7 @@ function validate_detection_parameters()
     if PTHRES > PHMI
         error("Prob non-monitored faults cannot exceed PHMI budget")
     end
-    probability(PFC)
+    probability(FC)
     non_negative(NITER)
     non_negative(TOL_PL)
     % Operation parameters
