@@ -49,9 +49,9 @@ for usr=1:n_usr
         (G, sigflt2_int, sigflt2_acc, nom_bias_int, nom_bias_acc, p_sat, p_const, 1:ngps, ngps+1:ngps+ngal);
   
     vhpl(usr,1)= vpl;
-    vhpl(usr,2)= emt;
+    vhpl(usr,2)= hpl;
     vhpl(usr,3)= sig_acc;
-    vhpl(usr,4)= hpl;
+    vhpl(usr,4)= emt;
    
   else                      
     vhpl(usr,1)=Inf;

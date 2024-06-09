@@ -3,6 +3,7 @@ function vhpl = run_araim(analysis_interval, user_data, satellite_almanac)
 %   For each epoch in analysis_interval, the vertical and horizontal
 %   protection levels, the effective monitoring threshold and the sigmas of
 %   accuracy are obtained.
+%   Returns: [vpl, hpl, sig_acc, emt]
 global COL_USR_LL;
 global COL_U2S_EL COL_U2S_AZ COL_U2S_VISIBLE COL_U2S_PRN COL_U2S_IPPLL ...
     COL_U2S_SIGNOM COL_U2S_SIGACC COL_U2S_GENU COL_U2S_UID;
