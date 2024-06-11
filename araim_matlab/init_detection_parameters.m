@@ -60,6 +60,6 @@ function operation_parameters()
     TTA_CONT = 6;
     NES_CONT = TEXP_CONT / TTA_CONT;
     % Alert Limits [^m]
-    VAL = 50;
+    VAL = 35;
     HAL = 40;
 end
