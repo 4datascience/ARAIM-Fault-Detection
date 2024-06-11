@@ -22,15 +22,15 @@ function design_parameters()
     global TOL_PL
 
     % Probability hazardous misleading information [^/hour]        
-    PHMI_V = 0;
+    PHMI_V = 9.8e-8;
     PHMI = 1e-7;
     PHMI_H = PHMI - PHMI_V;
     % Probability Alert. Continuity budget allocated to disruptions\
     % due to false alert and failed exclusions [^/hour]
-    PALERT = 1e-6;
+    PALERT = 1e-5;
     %%%% False alert allocation [^/h]
-    PFA_V = 0;
-    PFA_H = 5e-7;
+    PFA_V = 3.9e-6;
+    PFA_H = 9e-8;
     PFA = PFA_V + PFA_H;
     % Threshold for the integrity risk allocation to not monitored faults [^/h]
     PTHRES = 8e-8;
@@ -52,14 +52,14 @@ function operation_parameters()
     %TTA_INT = 8;    
     % Number of effective exposures, default Time Exposition for
     % RNP=1h. LPV-200 TEXP=150s TTA=6s
-    TEXP_INT = 3600;
-    TTA_INT = 8;
+    TEXP_INT = 150;
+    TTA_INT = 6;
     NES_INT = TEXP_INT / TTA_INT;
     % Continuity
-    TEXP_CONT = 3600;
-    TTA_CONT = 8;
+    TEXP_CONT = 150;
+    TTA_CONT = 6;
     NES_CONT = TEXP_CONT / TTA_CONT;
     % Alert Limits [^m]
-    VAL = 1e10;
-    HAL = 555.6;
+    VAL = 50;
+    HAL = 40;
 end
